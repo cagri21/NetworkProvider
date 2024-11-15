@@ -30,6 +30,6 @@ let package: Package = Package(
         .testTarget(
             name: "NetworkProviderTests",
             dependencies: ["NetworkProvider"],
-            path: "Tests")
+            path: "NetworkProviderTests")
     ]
 )

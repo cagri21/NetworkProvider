@@ -19,7 +19,7 @@ let package: Package = Package(
     ],
     targets: [
         .target(
-            name: "CookIslands",
+            name: "NetworkProvider",
             dependencies: [
                 "Alamofire",
                 "OAuthSwift",

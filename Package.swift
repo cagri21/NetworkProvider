@@ -26,7 +26,7 @@ let package: Package = Package(
                 "SwiftKeychainWrapper",
                 "Reachability",
             ],
-            path: "Sources"),
+            path: "NetworkProvider"),
         .testTarget(
             name: "NetworkProviderTests",
             dependencies: ["NetworkProvider"],

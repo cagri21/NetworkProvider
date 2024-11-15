@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DFB17DC62CE7731800839DA3 /* NetworkProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */; };
+		DFB17E3E2CE77AA200839DA3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E3D2CE77AA200839DA3 /* Alamofire */; };
+		DFB17E412CE77ACD00839DA3 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E402CE77ACD00839DA3 /* OAuthSwift */; };
+		DFB17E442CE77AF200839DA3 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E432CE77AF200839DA3 /* Reachability */; };
+		DFB17E472CE77B1F00839DA3 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E462CE77B1F00839DA3 /* SwiftKeychainWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB17E412CE77ACD00839DA3 /* OAuthSwift in Frameworks */,
+				DFB17E442CE77AF200839DA3 /* Reachability in Frameworks */,
+				DFB17E472CE77B1F00839DA3 /* SwiftKeychainWrapper in Frameworks */,
+				DFB17E3E2CE77AA200839DA3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +127,10 @@
 			);
 			name = NetworkProvider;
 			packageProductDependencies = (
+				DFB17E3D2CE77AA200839DA3 /* Alamofire */,
+				DFB17E402CE77ACD00839DA3 /* OAuthSwift */,
+				DFB17E432CE77AF200839DA3 /* Reachability */,
+				DFB17E462CE77B1F00839DA3 /* SwiftKeychainWrapper */,
 			);
 			productName = NetworkProvider;
 			productReference = DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */;
@@ -174,6 +186,12 @@
 			);
 			mainGroup = DFB17DB12CE7731800839DA3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DFB17E3F2CE77ACD00839DA3 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+				DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */,
+				DFB17E452CE77B1F00839DA3 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DFB17DBC2CE7731800839DA3 /* Products */;
 			projectDirPath = "";
@@ -482,6 +500,65 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		DFB17E3F2CE77ACD00839DA3 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
+			requirement = {
+				kind = versionRange;
+				maximumVersion = 2.1.0;
+				minimumVersion = 2.0.0;
+			};
+		};
+		DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		DFB17E452CE77B1F00839DA3 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DFB17E3D2CE77AA200839DA3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		DFB17E402CE77ACD00839DA3 /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFB17E3F2CE77ACD00839DA3 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+		DFB17E432CE77AF200839DA3 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		DFB17E462CE77B1F00839DA3 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFB17E452CE77B1F00839DA3 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DFB17DB22CE7731800839DA3 /* Project object */;
 }

@@ -12,6 +12,10 @@
 		DFB17E412CE77ACD00839DA3 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E402CE77ACD00839DA3 /* OAuthSwift */; };
 		DFB17E442CE77AF200839DA3 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E432CE77AF200839DA3 /* Reachability */; };
 		DFB17E472CE77B1F00839DA3 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E462CE77B1F00839DA3 /* SwiftKeychainWrapper */; };
+		DFF541F72CE78325005F10AC /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541F62CE78325005F10AC /* Promises */; };
+		DFF541FB2CE783FA005F10AC /* FBLPromises in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541FA2CE783FA005F10AC /* FBLPromises */; };
+		DFF541FD2CE783FA005F10AC /* FBLPromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541FC2CE783FA005F10AC /* FBLPromisesTestHelpers */; };
+		DFF541FF2CE783FA005F10AC /* PromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541FE2CE783FA005F10AC /* PromisesTestHelpers */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +31,7 @@
 /* Begin PBXFileReference section */
 		DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB17DC52CE7731800839DA3 /* NetworkProviderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkProviderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFF541F82CE783CC005F10AC /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -60,9 +65,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF541FF2CE783FA005F10AC /* PromisesTestHelpers in Frameworks */,
+				DFF541FD2CE783FA005F10AC /* FBLPromisesTestHelpers in Frameworks */,
 				DFB17E412CE77ACD00839DA3 /* OAuthSwift in Frameworks */,
 				DFB17E442CE77AF200839DA3 /* Reachability in Frameworks */,
 				DFB17E472CE77B1F00839DA3 /* SwiftKeychainWrapper in Frameworks */,
+				DFF541FB2CE783FA005F10AC /* FBLPromises in Frameworks */,
+				DFF541F72CE78325005F10AC /* Promises in Frameworks */,
 				DFB17E3E2CE77AA200839DA3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +90,7 @@
 		DFB17DB12CE7731800839DA3 = {
 			isa = PBXGroup;
 			children = (
+				DFF541F82CE783CC005F10AC /* Package.swift */,
 				DFB17DBD2CE7731800839DA3 /* NetworkProvider */,
 				DFB17DC92CE7731800839DA3 /* NetworkProviderTests */,
 				DFB17DBC2CE7731800839DA3 /* Products */,
@@ -131,6 +141,10 @@
 				DFB17E402CE77ACD00839DA3 /* OAuthSwift */,
 				DFB17E432CE77AF200839DA3 /* Reachability */,
 				DFB17E462CE77B1F00839DA3 /* SwiftKeychainWrapper */,
+				DFF541F62CE78325005F10AC /* Promises */,
+				DFF541FA2CE783FA005F10AC /* FBLPromises */,
+				DFF541FC2CE783FA005F10AC /* FBLPromisesTestHelpers */,
+				DFF541FE2CE783FA005F10AC /* PromisesTestHelpers */,
 			);
 			productName = NetworkProvider;
 			productReference = DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */;
@@ -191,6 +205,7 @@
 				DFB17E3F2CE77ACD00839DA3 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
 				DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */,
 				DFB17E452CE77B1F00839DA3 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DFB17DBC2CE7731800839DA3 /* Products */;
@@ -514,9 +529,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift";
 			requirement = {
-				kind = versionRange;
-				maximumVersion = 2.1.0;
-				minimumVersion = 2.0.0;
+				kind = exactVersion;
+				version = 2.0.1;
 			};
 		};
 		DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */ = {
@@ -533,6 +547,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.1;
+			};
+		};
+		DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/promises";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -557,6 +579,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DFB17E452CE77B1F00839DA3 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
+		};
+		DFF541F62CE78325005F10AC /* Promises */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = Promises;
+		};
+		DFF541FA2CE783FA005F10AC /* FBLPromises */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = FBLPromises;
+		};
+		DFF541FC2CE783FA005F10AC /* FBLPromisesTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = FBLPromisesTestHelpers;
+		};
+		DFF541FE2CE783FA005F10AC /* PromisesTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = PromisesTestHelpers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

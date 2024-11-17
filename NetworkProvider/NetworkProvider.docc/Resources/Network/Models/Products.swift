@@ -12,14 +12,15 @@ import SDWebImage
 public protocol ProductDisplayable {
     var id: Int { get }
     var title: String { get }
-    var imageURL: String { get }
+    var image: String { get }
     var price: Double { get }
     var instantDiscountPrice: Double? { get }
+    var rate: Double { get }
     var imageData: UIImage? { get set } // Mutable property for storing the image
 }
 
 // MARK: - API Response
-public struct ProductsResponse: Codable {
+public struct ProductsResponse: Decodable {
     public let page: String
     public let nextPage: String?
     public let publishedAt: String
@@ -54,17 +55,62 @@ public struct ProductsResponse: Codable {
     }
 }
 
-public struct SponsoredProduct: Codable, ProductDisplayable {
-    public let id: Int
-    public let title: String
-    public let image: String
-    public let price: Double
-    public let instantDiscountPrice: Double?
-    public let rate: Double?
+public struct SponsoredProduct: Decodable, ProductDisplayable {
+    public var id: Int
+    public var title: String
+    public var image: String
+    public var price: Double
+    public var instantDiscountPrice: Double?
+    public var rate: Double
 
     public var imageData: UIImage?
 
-    public var imageURL: String { image }
+    // Shared GCD queue for background tasks
+    private static let backgroundQueue = DispatchQueue(label: "com.app.imageDownloadQueue", qos: .background)
+    
+    private enum ProductCodingKeys: String, CodingKey {
+        case id, title, image, price, instantDiscountPrice, rate
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: ProductCodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        title = try container.decode(String.self, forKey: .title)
+        image = try container.decode(String.self, forKey: .image)
+        price = try container.decode(Double.self, forKey: .price)
+        instantDiscountPrice = try container.decodeIfPresent(Double.self, forKey: .instantDiscountPrice)
+        rate = try container.decode(Double.self, forKey: .rate)
+    }
+    
+    
+    public func fetchImage(completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: image) else {
+            completion(nil)
+            return
+        }
+
+            // Use SDWebImage for downloading in a separate function
+        SDWebImageDownloader.shared.downloadImage(with: url) { image, _, _, _ in
+        DispatchQueue.main.async {
+                completion(image)
+            }
+        }
+    }
+}
+
+public struct Product: Decodable, ProductDisplayable {
+    public var id: Int
+    public var title: String
+    public var image: String
+    public var price: Double
+    public var instantDiscountPrice: Double?
+    public var rate: Double
+    public var sellerName: String
+    public var imageData: UIImage?
+    
+    private enum ProductCodingKeys: String, CodingKey {
+        case id, title, image, price, instantDiscountPrice, rate, sellerName
+    }
 
     // Shared GCD queue for background tasks
     private static let backgroundQueue = DispatchQueue(label: "com.app.imageDownloadQueue", qos: .background)
@@ -76,56 +122,23 @@ public struct SponsoredProduct: Codable, ProductDisplayable {
         image = try container.decode(String.self, forKey: .image)
         price = try container.decode(Double.self, forKey: .price)
         instantDiscountPrice = try container.decodeIfPresent(Double.self, forKey: .instantDiscountPrice)
-        rate = try container.decodeIfPresent(Double.self, forKey: .rate)
+        rate = try container.decode(Double.self, forKey: .rate)
+        sellerName = try container.decode(String.self, forKey: .sellerName)
+    }
+    
+    public func fetchImage(completion: @escaping (UIImage?) -> Void) {
+        guard let url = URL(string: image) else {
+            completion(nil)
+            return
+        }
 
-        // Asynchronously fetch the image during decoding
-        Self.backgroundQueue.async {
-            SDWebImageDownloader.shared.downloadImage(with: URL(string: self.imageURL)) { image, _, _, _ in
-                DispatchQueue.main.async {
-                    self.imageData = image
-                }
+            // Use SDWebImage for downloading in a separate function
+        SDWebImageDownloader.shared.downloadImage(with: url) { image, _, _, _ in
+        DispatchQueue.main.async {
+                completion(image)
             }
         }
     }
 }
 
-public struct Product: Codable, ProductDisplayable {
-    public let id: Int
-    public let title: String
-    public let image: String
-    public let price: Double
-    public let instantDiscountPrice: Double?
-    public let rate: Double?
-    public let sellerName: String?
 
-    public var imageData: UIImage?
-
-    public var imageURL: String { image }
-
-    // Shared GCD queue for background tasks
-    private static let backgroundQueue = DispatchQueue(label: "com.app.imageDownloadQueue", qos: .background)
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: ProductCodingKeys.self)
-        id = try container.decode(Int.self, forKey: .id)
-        title = try container.decode(String.self, forKey: .title)
-        image = try container.decode(String.self, forKey: .image)
-        price = try container.decode(Double.self, forKey: .price)
-        instantDiscountPrice = try container.decodeIfPresent(Double.self, forKey: .instantDiscountPrice)
-        rate = try container.decodeIfPresent(Double.self, forKey: .rate)
-        sellerName = try container.decodeIfPresent(String.self, forKey: .sellerName)
-
-        // Asynchronously fetch the image during decoding
-        Self.backgroundQueue.async {
-            SDWebImageDownloader.shared.downloadImage(with: URL(string: self.imageURL)) { image, _, _, _ in
-                DispatchQueue.main.async {
-                    self.imageData = image
-                }
-            }
-        }
-    }
-}
-
-internal enum ProductCodingKeys: String, CodingKey {
-    case id, title, image, price, instantDiscountPrice, rate
-}

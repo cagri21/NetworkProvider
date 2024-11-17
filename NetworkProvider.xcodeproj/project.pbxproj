@@ -206,6 +206,7 @@
 				DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */,
 				DFB17E452CE77B1F00839DA3 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */,
+				DF8904262CEA7BE0009A0C99 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DFB17DBC2CE7731800839DA3 /* Products */;
@@ -517,6 +518,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DF8904262CEA7BE0009A0C99 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
 		DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";

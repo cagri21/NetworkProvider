@@ -18,7 +18,7 @@ public class ProductsService: ProductsServiceProtocol {
     }
 
     // MARK: - Action Plans of specific indicator message and risk object
-    public func retrieveProducts(page: Int = 1, parameters: [URLQueryItem]?, completion: @escaping RetrieveProductResult) {
+    public func getProducts(page: Int = 1, parameters: [URLQueryItem]?, completion: @escaping RetrieveProductResult) {
         NetworkManager.sharedInstance.fetchData(apiRequest: ProductsRouter.products(page.description)) { result in
             switch result {
             case .success(let data):
@@ -37,5 +37,5 @@ public class ProductsService: ProductsServiceProtocol {
 }
 
 public protocol ProductsServiceProtocol {
-    func retrieveProducts(page: Int, parameters: [URLQueryItem]?, completion: @escaping ((Swift.Result<ProductsResponse, ExceptionHandler>) -> Void))
+    func getProducts(page: Int, parameters: [URLQueryItem]?, completion: @escaping ((Swift.Result<ProductsResponse, ExceptionHandler>) -> Void))
 }

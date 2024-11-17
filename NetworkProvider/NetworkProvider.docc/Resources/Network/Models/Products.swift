@@ -17,6 +17,7 @@ public protocol ProductDisplayable {
     var instantDiscountPrice: Double? { get }
     var rate: Double { get }
     var imageData: UIImage? { get set } // Mutable property for storing the image
+    func getImage(completion: @escaping (UIImage?) -> Void)
 }
 
 // MARK: - API Response
@@ -83,7 +84,7 @@ public struct SponsoredProduct: Decodable, ProductDisplayable {
     }
     
     
-    public func fetchImage(completion: @escaping (UIImage?) -> Void) {
+    public func getImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: image) else {
             completion(nil)
             return
@@ -126,7 +127,7 @@ public struct Product: Decodable, ProductDisplayable {
         sellerName = try container.decode(String.self, forKey: .sellerName)
     }
     
-    public func fetchImage(completion: @escaping (UIImage?) -> Void) {
+    public func getImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: image) else {
             completion(nil)
             return

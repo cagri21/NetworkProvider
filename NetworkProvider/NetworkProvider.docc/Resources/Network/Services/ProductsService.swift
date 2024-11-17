@@ -26,7 +26,7 @@ public class ProductsService: ProductsServiceProtocol {
                     let products: ProductsResponse = try self.decoder.decode(ProductsResponse.self, from: data)
                     completion(.success(products))
                 } catch {
-                    completion(.failure(ExceptionHandler.invalidFormat))
+                    completion(.failure(ExceptionHandler.unwrappingError))
                 }
             case .failure(let error):
                 completion(.failure(error))

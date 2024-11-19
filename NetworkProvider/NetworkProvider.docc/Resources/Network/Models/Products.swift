@@ -15,14 +15,14 @@ public protocol ProductDisplayable: Codable {
     var title: String { get }
     var image: String { get }
     var price: Double { get }
-    var instantDiscountPrice: Double? { get }
-    var rate: Double? { get }
+    var instantDiscountPrice: Double { get }
+    var rate: Double { get }
     var imageData: UIImage? { get set }
 
     func getImage(completion: @escaping (UIImage?) -> Void)
 }
 
-// Default implementation for fetchImage
+// Default implementation for getImage
 public extension ProductDisplayable {
     func getImage(completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: image) else {
@@ -61,8 +61,8 @@ public struct SponsoredProduct: ProductDisplayable {
     public var title: String
     public var image: String
     public var price: Double
-    public var instantDiscountPrice: Double?
-    public var rate: Double?
+    public var instantDiscountPrice: Double
+    public var rate: Double
     public var imageData: UIImage? = nil // Exclude this from decoding
 
     // Define CodingKeys to exclude `imageData` from decoding
@@ -77,8 +77,8 @@ public struct Product: ProductDisplayable {
     public var title: String
     public var image: String
     public var price: Double
-    public var instantDiscountPrice: Double?
-    public var rate: Double?
+    public var instantDiscountPrice: Double
+    public var rate: Double
     public var sellerName: String
     public var imageData: UIImage? = nil // Exclude this from decoding
 

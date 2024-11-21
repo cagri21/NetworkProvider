@@ -12,21 +12,15 @@ let package: Package = Package(
             targets: ["NetworkProvider"])
     ],
     dependencies: [
-        .package(url: "https://github.com/OAuthSwift/OAuthSwift", .exact("2.0.1")),
         .package(url: "https://github.com/Alamofire/Alamofire", .upToNextMajor(from: ("5.4.3"))),
-        .package(url: "https://github.com/jrendel/SwiftKeychainWrapper.git", .upToNextMajor(from: "4.0.1")),
-        .package(url: "https://github.com/ashleymills/Reachability.swift", .upToNextMajor(from: "5.1.0")),
-        .package(url: "https://github.com/SDWebImage/SDWebImage.git", .upToNextMajor(from: "5.20.0"))
+        .package(url: "https://github.com/ashleymills/Reachability.swift", .upToNextMajor(from: "5.1.0"))
     ],
     targets: [
         .target(
             name: "NetworkProvider",
             dependencies: [
                 "Alamofire",
-                "OAuthSwift",
-                "SwiftKeychainWrapper",
                 "Reachability",
-                "SDWebImage",
             ],
             path: "NetworkProvider"),
         .testTarget(

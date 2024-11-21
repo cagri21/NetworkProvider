@@ -26,22 +26,6 @@ public protocol ProductDisplayable: BaseProductDisplayable {
     var rate: Double? { get }
 }
 
-// Default implementation for getImage
-public extension ProductDisplayable {
-    func getImage(completion: @escaping (UIImage?) -> Void) {
-        guard let url = URL(string: image) else {
-            completion(nil)
-            return
-        }
-
-        SDWebImageDownloader.shared.downloadImage(with: url) { image, _, _, _ in
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        }
-    }
-}
-
 // MARK: - ProductsResponse
 public struct ProductsResponse: Codable {
     public let page: String

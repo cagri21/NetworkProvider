@@ -14,6 +14,7 @@ public protocol BaseProductDisplayable: Codable {
     var price: Double { get }
     var instantDiscountPrice: Double? { get }
     var rate: Double? { get }
+    var id: Int { get }
 }
 
 

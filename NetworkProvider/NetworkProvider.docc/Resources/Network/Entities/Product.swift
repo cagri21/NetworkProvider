@@ -7,7 +7,7 @@
 
 public struct ProductResponse: BaseProductDisplayable, Codable {
     public var title: String
-    public let images: [String]
+    public var images: [String]
     public var description: String
     public var price: Double
     public var instantDiscountPrice: Double?

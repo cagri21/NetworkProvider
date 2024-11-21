@@ -18,8 +18,8 @@ final class AuthInterceptor: RequestInterceptor {
 
         var request: URLRequest = urlRequest
 
-        request.setValue("application/vnd.api+json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/vnd.api+json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
 
         completion(.success(request))
     }

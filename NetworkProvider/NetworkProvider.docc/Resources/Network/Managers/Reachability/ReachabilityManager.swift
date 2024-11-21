@@ -11,7 +11,7 @@ import Reachability
 import SystemConfiguration
 
 // swiftlint:disable force_cast
-open class ReachabilityManager: NSObject {
+final public class ReachabilityManager: NSObject {
     public static  let shared: ReachabilityManager = ReachabilityManager()  // 2. Shared instance
 // swiftlint:disable implicit_return
     var isNetworkAvailable: Bool {

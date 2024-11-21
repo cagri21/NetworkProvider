@@ -50,7 +50,7 @@ final public class ReachabilityManager: NSObject {
     public func startMonitoring() {
 
         guard let reachability: Reachability = reachability else {
-            debugPrint("Could reach Reachability instance")
+            Logger.error("Could reach Reachability instance")
             return
         }
 
@@ -61,7 +61,7 @@ final public class ReachabilityManager: NSObject {
         do {
             try reachability.startNotifier()
         } catch {
-            debugPrint("Could not start reachability notifier")
+            Logger.error("Could not start reachability notifie")
         }
     }
 

@@ -32,8 +32,8 @@ extension UserDefaults {
     private class func defaultPreferences() -> [String: AnyObject] {
         guard let defaultPList: String = Bundle.main.path(forResource: "Defaults", ofType: "plist"),
             let defaultPreferences: [String: AnyObject] = NSDictionary(contentsOfFile: defaultPList) as? [String: AnyObject] else {
-                DLog("\(UserDefaults.self): Unable to find Defaults.plist.")
-                return [:]
+            Logger.error("Unable to find Defaults.plist.")
+            return [:]
         }
         return defaultPreferences
     }
@@ -63,7 +63,7 @@ extension UserDefaults {
         get {
             guard let environment: String = standard.string(forKey: UserDefaults.Keys.activeBackend) else {
                 let defaultValue: String = BackendType.live.rawValue
-
+                
                 standard.set(defaultValue, forKey: UserDefaults.Keys.activeBackend)
                 standard.synchronize()
                 return defaultValue
@@ -81,7 +81,8 @@ extension UserDefaults {
 
     public static  func getCurrentAppVersion() -> String {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            fatalError("App versin not found in info plist")
+            Logger.error("App version not found in info plist")
+            return "1.0.0"
         }
 
         return version

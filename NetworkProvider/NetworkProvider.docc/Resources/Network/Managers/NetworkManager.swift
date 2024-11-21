@@ -22,6 +22,7 @@ final class NetworkManager {
             switch result {
             case let .success(response):
                 guard let data: Data = response.data else {
+                    Logger.error("Parsing error")
                     completion(.failure(ExceptionHandler.unwrappingError))
                     return
                 }

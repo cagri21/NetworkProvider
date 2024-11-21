@@ -7,6 +7,22 @@
 
 import UIKit
 
+public protocol ErrorHandlingServiceProtocol {
+    func getErrorMessage(for error: Error) -> String
+}
+
+public struct ErrorHandlingService: ErrorHandlingServiceProtocol {
+    public init() {}
+
+    public func getErrorMessage(for error: Error) -> String {
+        if let exception = error as? ExceptionHandler {
+            return exception.localizedDescription
+        } else {
+            return NSLocalizedString("An unexpected error occurred. Please try again.", comment: "Default Error")
+        }
+    }
+}
+
 public enum ExceptionHandler: Error {
 
     case authError
@@ -40,7 +56,7 @@ public enum ExceptionHandler: Error {
         case .unwrappingError:
             return NSLocalizedString("Sorry, some data was missing from the response. Please try again or contact support.", comment: "Unwrapping error message")
         case .invalidFormat:
-            return NSLocalizedString("Sorry, the operation couldn't be completed. Server response in invalid format. Please contact Support.", comment: "Invalid format error message")
+            return NSLocalizedString("Sorry, the operation couldn't be completed. Server response in invalid format.", comment: "Invalid format error message")
         case .noConnection:
             return NSLocalizedString("The internet connection appears to be offline. Check your connection and try again.", comment: "No connection error message")
         case .notFound:

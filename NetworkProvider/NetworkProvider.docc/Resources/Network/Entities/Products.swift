@@ -10,7 +10,15 @@ import UIKit
 import SDWebImage
 
 // MARK: - ProductDisplayable Protocol
-public protocol ProductDisplayable: Codable {
+public protocol BaseProductDisplayable: Codable {
+    var title: String { get }
+    var price: Double { get }
+    var instantDiscountPrice: Double? { get }
+    var rate: Double? { get }
+}
+
+
+public protocol ProductDisplayable: BaseProductDisplayable {
     var id: Int { get }
     var title: String { get }
     var image: String { get }

@@ -13,7 +13,7 @@ class NetworkManager {
 
     static let sharedInstance: NetworkManager = NetworkManager()
 
-    let operationsQueue: ROperationQueue = ROperationQueue()
+    let operationsQueue: RequestOperationQueue = RequestOperationQueue()
 
     typealias JSONDataHandler = (Swift.Result<Data, ExceptionHandler>) -> Void
 

@@ -27,4 +27,10 @@ struct Endpoints {
             path: "/listing/\(page)"
         )
     }
+    
+    static func product(_ queryItems: [URLQueryItem]) -> Endpoints {
+        Endpoints(
+            path: "/product", queryItems: queryItems
+        )
+    }
 }

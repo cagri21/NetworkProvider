@@ -11,10 +11,13 @@ import Foundation
 enum ProductsRouter: URLRequestConvertible {
 
     case products(String)
+    case product(Int)
 
     var method: HTTPMethod {
         switch self {
         case .products:
+            return .get
+        case .product(_):
             return .get
         }
     }
@@ -24,8 +27,10 @@ enum ProductsRouter: URLRequestConvertible {
 
         switch self {
         case let .products(page):
-
             url = Endpoints.products(page).url
+        case let .product(productID):
+            let queryItems: [URLQueryItem] = defaultProductQueryItems(productID)
+            url = Endpoints.product(queryItems).url
         }
 
         var request: URLRequest = URLRequest(url: url)
@@ -35,10 +40,11 @@ enum ProductsRouter: URLRequestConvertible {
         return try URLEncoding.default.encode(request, with: nil)
     }
 
-    // MARK: - Master Data Query Items
-    private func defaultIncidentsQueryItems(_ page: Int) -> [URLQueryItem] {
-        var queryItems: [URLQueryItem] = []
-
+    // MARK: - Product Data Query Items
+    private func defaultProductQueryItems(_ productID: Int) -> [URLQueryItem] {
+        let queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "productId", value: "\(productID)"),
+        ]
         return queryItems
     }
 

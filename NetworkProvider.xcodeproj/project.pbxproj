@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		DFB17DC62CE7731800839DA3 /* NetworkProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */; };
+		DFB17E3E2CE77AA200839DA3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E3D2CE77AA200839DA3 /* Alamofire */; };
+		DFB17E442CE77AF200839DA3 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = DFB17E432CE77AF200839DA3 /* Reachability */; };
+		DFF541F72CE78325005F10AC /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541F62CE78325005F10AC /* Promises */; };
+		DFF541FB2CE783FA005F10AC /* FBLPromises in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541FA2CE783FA005F10AC /* FBLPromises */; };
+		DFF541FD2CE783FA005F10AC /* FBLPromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541FC2CE783FA005F10AC /* FBLPromisesTestHelpers */; };
+		DFF541FF2CE783FA005F10AC /* PromisesTestHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = DFF541FE2CE783FA005F10AC /* PromisesTestHelpers */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +29,7 @@
 /* Begin PBXFileReference section */
 		DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB17DC52CE7731800839DA3 /* NetworkProviderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkProviderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFF541F82CE783CC005F10AC /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,6 +63,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFF541FF2CE783FA005F10AC /* PromisesTestHelpers in Frameworks */,
+				DFF541FD2CE783FA005F10AC /* FBLPromisesTestHelpers in Frameworks */,
+				DFB17E442CE77AF200839DA3 /* Reachability in Frameworks */,
+				DFF541FB2CE783FA005F10AC /* FBLPromises in Frameworks */,
+				DFF541F72CE78325005F10AC /* Promises in Frameworks */,
+				DFB17E3E2CE77AA200839DA3 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +86,7 @@
 		DFB17DB12CE7731800839DA3 = {
 			isa = PBXGroup;
 			children = (
+				DFF541F82CE783CC005F10AC /* Package.swift */,
 				DFB17DBD2CE7731800839DA3 /* NetworkProvider */,
 				DFB17DC92CE7731800839DA3 /* NetworkProviderTests */,
 				DFB17DBC2CE7731800839DA3 /* Products */,
@@ -119,6 +133,12 @@
 			);
 			name = NetworkProvider;
 			packageProductDependencies = (
+				DFB17E3D2CE77AA200839DA3 /* Alamofire */,
+				DFB17E432CE77AF200839DA3 /* Reachability */,
+				DFF541F62CE78325005F10AC /* Promises */,
+				DFF541FA2CE783FA005F10AC /* FBLPromises */,
+				DFF541FC2CE783FA005F10AC /* FBLPromisesTestHelpers */,
+				DFF541FE2CE783FA005F10AC /* PromisesTestHelpers */,
 			);
 			productName = NetworkProvider;
 			productReference = DFB17DBB2CE7731800839DA3 /* NetworkProvider.framework */;
@@ -174,6 +194,11 @@
 			);
 			mainGroup = DFB17DB12CE7731800839DA3;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */,
+				DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DFB17DBC2CE7731800839DA3 /* Products */;
 			projectDirPath = "";
@@ -482,6 +507,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/promises";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DFB17E3D2CE77AA200839DA3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFB17E3C2CE77AA200839DA3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		DFB17E432CE77AF200839DA3 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFB17E422CE77AF200839DA3 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+		DFF541F62CE78325005F10AC /* Promises */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = Promises;
+		};
+		DFF541FA2CE783FA005F10AC /* FBLPromises */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = FBLPromises;
+		};
+		DFF541FC2CE783FA005F10AC /* FBLPromisesTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = FBLPromisesTestHelpers;
+		};
+		DFF541FE2CE783FA005F10AC /* PromisesTestHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DFF541F52CE78325005F10AC /* XCRemoteSwiftPackageReference "promises" */;
+			productName = PromisesTestHelpers;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DFB17DB22CE7731800839DA3 /* Project object */;
 }

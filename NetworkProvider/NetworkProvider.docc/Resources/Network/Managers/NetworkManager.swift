@@ -37,7 +37,14 @@ final class NetworkManager {
     typealias ApiResponseHandler = (Swift.Result<AFDataResponse<Data>, ExceptionHandler>) -> Void
 
     func callApi(apiRequest: URLRequestConvertible, completion: @escaping ApiResponseHandler) {
-       let callApiOperation: NetworkOperation = NetworkOperation(request: apiRequest) { connection in
+        if let reachability: Reachability = try? Reachability() {
+            if reachability.connection == Reachability.Connection.unavailable {
+                operationsQueue.downloadQueue.cancelAllOperations()
+                completion(.failure(ExceptionHandler.noConnection))
+            }
+        }
+
+        let callApiOperation: NetworkOperation = NetworkOperation(request: apiRequest) { connection in
             switch connection {
             case .success(let connection):
                 completion(.success(connection))

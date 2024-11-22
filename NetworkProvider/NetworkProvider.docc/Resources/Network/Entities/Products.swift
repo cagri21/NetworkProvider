@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SDWebImage
 
 // MARK: - ProductDisplayable Protocol
 public protocol BaseProductDisplayable: Codable {

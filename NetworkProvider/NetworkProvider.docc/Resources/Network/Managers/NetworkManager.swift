@@ -33,9 +33,7 @@ final class NetworkManager {
         }
     }
 
-    // MARK: -
-    // Only Applicable for get API that returns JSON:API in response
-
+    // MARK: - callApi
     typealias ApiResponseHandler = (Swift.Result<AFDataResponse<Data>, ExceptionHandler>) -> Void
 
     func callApi(apiRequest: URLRequestConvertible, completion: @escaping ApiResponseHandler) {
